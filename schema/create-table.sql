@@ -1,37 +1,50 @@
---EXAMPLE CREATE STATEMENTS
--- DEPARTMENTS
-CREATE TABLE departments (
-    department_id INT AUTO_INCREMENT PRIMARY KEY,
-    department_name VARCHAR(100) NOT NULL
-);
-
--- EMPLOYEES
 CREATE TABLE employees (
-    employee_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(100),
-    last_name VARCHAR(100),
-    department_id INT,
-    hire_date DATE,
-    job_title VARCHAR(100),
-    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+  id INT PRIMARY KEY,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  salary INT,
+  department_id INT
 );
 
--- SALARIES
-CREATE TABLE salaries (
-    salary_id INT AUTO_INCREMENT PRIMARY KEY,
-    employee_id INT,
-    amount DECIMAL(10,2),
-    from_date DATE,
-    to_date DATE,
-    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+INSERT INTO employees (id, first_name, last_name, salary, department_id) VALUES
+(1, 'Alice', 'Johnson', 60000, 1),
+(2, 'Bob', 'Smith', 75000, 1),
+(3, 'Charlie', 'Brown', 50000, 2),
+(4, 'Daisy', 'Williams', 80000, 3),
+(5, 'Eve', 'Davis', 55000, 2);
+---------------------------------------------------------------------
+CREATE TABLE departments (
+  id INT PRIMARY KEY,
+  name VARCHAR(50)
 );
 
--- PROJECTS
+INSERT INTO departments (id, name) VALUES
+(1, 'Engineering'),
+(2, 'Marketing'),
+(3, 'Human Resources');
+---------------------------------------------------------------------
 CREATE TABLE projects (
-    project_id INT AUTO_INCREMENT PRIMARY KEY,
-    project_name VARCHAR(150),
-    employee_id INT,
-    start_date DATE,
-    end_date DATE,
-    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+  id INT PRIMARY KEY,
+  title VARCHAR(100),
+  start_date DATE,
+  end_date DATE,
+  budget INT
 );
+
+INSERT INTO projects (id, title, start_date, end_date, budget) VALUES
+(1, 'Website Redesign', '2023-01-01', '2023-06-01', 100000),
+(2, 'Product Launch', '2023-02-01', '2023-08-01', 75000),
+(3, 'Recruitment Campaign', '2023-03-01', '2023-07-01', 50000);
+---------------------------------------------------------------------------
+CREATE TABLE employees_projects (
+  project_id INT,
+  employee_id INT,
+  FOREIGN KEY (project_id) REFERENCES projects(id),
+  FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+INSERT INTO employees_projects (project_id, employee_id) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(3, 4);

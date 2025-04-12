@@ -16,6 +16,7 @@ departments                  |  |  |  employees_projects
 +---------------+---------+           +---------------+---------+
 */
 --(INNER, LEFT, RIGHT, FULL)
+--INNER JOIN is same as JOIN
 
 --List all employees along with their department names.
 SELECT 
@@ -40,3 +41,18 @@ ON e.id=ep.employee_id
 JOIN 
     projects as p 
 ON ep.project_id=p.id
+
+
+--Find all employees who are not assigned to any 
+--projects (use a LEFT JOIN).
+
+SELECT 
+    e.first_name 
+FROM 
+    employees as e 
+LEFT JOIN 
+    employees_projects as ep 
+ON 
+    e.id=ep.employee_id 
+WHERE 
+    ep.project_id IS NULL
