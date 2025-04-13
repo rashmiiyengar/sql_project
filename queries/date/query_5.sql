@@ -38,9 +38,11 @@ WHERE YEAR(startdate) > 2010
 SELECT title ,start_date ,end_date ,DATEDIFF(end_date,start_date) as durationOfdays
 FROM projects as p
 
-
 -- Show all employees who were hired within the last 15 Year.
 SELECT distinct e.first_name from employees as e 
 JOIN employees_projects as ep on e.id=ep.employee_id
 JOIN projects as p on ep.project_id =p.id
 WHERE p.start_date >= CURRDATE() - INTERVAL 6 MONTH
+
+-- Get all projects that started in 2011.
+select * from projects where YEAR(start_date) = 2011
