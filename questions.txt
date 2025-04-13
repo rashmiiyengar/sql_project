@@ -24,34 +24,29 @@ List employees who are assigned to projects with a budget greater than 1 million
 Show the employees who work in the department with the highest salary.
 Get a list of employees who have been assigned to more than 1 project.
 
-5. Common Table Expressions (CTE)
-Use a CTE to list the department with the highest average salary.
-Write a query to find employees who are working on projects that started in 2023, using a CTE.
-Use a CTE to get employees who are assigned to projects within a specific budget range.
-
-6. Window Functions (RANK, DENSE_RANK, ROW_NUMBER)
+5. Window Functions (RANK, DENSE_RANK, ROW_NUMBER)
 Use ROW_NUMBER() to assign a ranking to employees based on their salary.
 Use RANK() to find the top 3 employees by salary.
 Use DENSE_RANK() to list employees in each department ordered by salary.
 
-7. Date Functions
+6. Date Functions
 List all employees who have been hired after 2020.
 Find the duration of each project in days (use DATEDIFF() or similar).
 Show all employees who were hired within the last 6 months.
 Get all projects that started in 2023.
 
-8. CASE Statements and Conditional Logic
+7. CASE Statements and Conditional Logic
 Create a query that categorizes employees into salary bands: low, medium, high based on salary.
 Write a query that shows employee names along with a message saying whether they are "working" or "not working" based on their assignment to a project.
 Create a report that shows the department name along with the number of employees working in that department, using a CASE statement.
 
-9. CRUD Operations (INSERT, UPDATE, DELETE)
+8. CRUD Operations (INSERT, UPDATE, DELETE)
 Insert a new employee into the employees table.
 Update the salary of an employee with a specific ID.
 Delete an employee record who is not assigned to any projects.
 Assign an employee to a project by inserting a record in the employees_projects table.
 
-10. Table Design and Schema Creation
+9. Table Design and Schema Creation
 Create a new table salaries that tracks employees' salary history, including the employee_id, salary, and date of the salary change.
 Alter the employees table to include a date_of_birth column.
 Drop the projects table and re-create it with an additional column for project manager manager_id.
