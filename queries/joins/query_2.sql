@@ -56,3 +56,19 @@ ON
     e.id=ep.employee_id 
 WHERE 
     ep.project_id IS NULL
+
+
+--List all projects and the employees assigned to them, 
+--including projects without any employees
+SELECT p.title, e.first_name
+FROM projects p
+LEFT JOIN employees_projects ep ON p.id = ep.project_id
+LEFT JOIN employees e ON ep.employee_id = e.id;
+
+--Show all departments and their employees 
+--(including departments without employees).
+
+SELECT d.name as department_name ,e.first_name as first_name 
+FROM departments d 
+LEFT JOIN employees e 
+ON d.id = e.department_id
